@@ -8,7 +8,6 @@
   box-sizing: border-box;
 }
 
-
 body {
   margin: 0;
   font-family: 'Orbitron', sans-serif;
@@ -171,11 +170,9 @@ section.active {
   width: 100%;
   z-index: 9999;
 }
-/* Red Bull Background for Hero */
 #hero {
-  background: url('../images/redbull-car.png') bottom right no-repeat,
-              linear-gradient(to right, #000, #111);
-  background-size: contain;
+  background: url('../images/redbull-car.png') bottom right no-repeat;
+  background-size: cover;
   min-height: 100vh;
   display: flex;
   justify-content: center;
@@ -185,6 +182,32 @@ section.active {
   position: relative;
   overflow: hidden;
 }
+
+#hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 0, 0, 0.2) 0%,
+    rgba(0, 0, 0, 0.5) 50%,
+    rgba(0, 0, 0, 0.8) 100%
+  );
+  z-index: 1;
+  pointer-events: none;
+}
+
+.hero-overlay {
+  z-index: 2;
+  background: transparent; /* or remove if not needed */
+}
+
+.hero h1, .hero p, .btn {
+  position: relative;
+  z-index: 3;
+}
+
+
 
 /* Responsive Hero */
 @media screen and (max-width: 768px) {
@@ -452,15 +475,109 @@ body::before {
 }
 #f1StartLight {
   position: fixed;
-  top: 50%;
+  top: 40%; /* ⬅️ Changed from 50% to 40% to move it up */
   left: 50%;
   transform: translate(-50%, -50%);
   width: 100vw;
   height: 100vh;
-  background: rgb(116, 116, 116);
+  background: transparent;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   z-index: 10000;
+}
+
+
+.intro-video {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  z-index: 9998;
+  opacity: 1;
+  transition: opacity 1s ease;
+}
+.pitstop-section {
+  background: url('assets/images/pitstop-bg.jpg') no-repeat center center/cover;
+  min-height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem;
+  position: relative;
+}
+
+
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+section {
+  min-height: 70vh;
+  padding: 4rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: url('assets/images/your-bg.jpg') no-repeat center center/cover; /* Optional, for background */
+  position: relative;
+}
+.section-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+
+
+.section-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  margin: 2rem auto;
+  max-width: 800px;
+}
+
+.section-link:hover {
+  transform: scale(1.02);
+  transition: transform 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+.glass-card {
+  background: rgba(0, 0, 0, 0.4); /* Semi-transparent black */
+  border-radius: 16px;
+  padding: 9rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(10px);
+  color: white;
+  transition: 0.3s ease;
+}
+.pitstop-section {
+  display: block !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  animation: none !important;
+}
+
+
+.pit-row {
+  margin-bottom: 2rem;
+}
+
+.pit-row h3 {
+  font-size: 1.3rem;
+  color: #ffdf1b;
+  margin-bottom: 0.5rem;
 }

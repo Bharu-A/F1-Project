@@ -90,3 +90,22 @@ window.addEventListener('load', () => {
     }
   }, 800); // Each light turns on every 800ms
 });
+window.addEventListener('load', () => {
+  const video = document.getElementById('introVideo');
+  const f1Block = document.getElementById('f1StartLight');
+  const hero = document.getElementById('hero');
+
+  video.play();
+
+  // After countdown & drift effect
+  const totalDelay = 5 * 800 + 2000; // ~6 seconds
+  setTimeout(() => {
+    f1Block.style.opacity = 0;
+    video.style.opacity = 0;
+    video.addEventListener('transitionend', () => {
+      f1Block.style.display = 'none';
+      video.remove();
+      hero.style.opacity = 1;
+    });
+  }, totalDelay);
+});
