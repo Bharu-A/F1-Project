@@ -1,111 +1,161 @@
-<section id="experience" class="career-laps glass-card">
-  <h2>🏁 Career Laps</h2>
-  <p class="intro">Every lap counts. Here's a breakdown of the races I've run.</p>
+<section id="career-laps" class="glass-card">
+  <div class="toolkit-header" style="color: #ffe600; text-shadow: 0 0 10px #000">
+    <h2>🏁 Career Laps: My Journey on Track</h2>
+    <p>From the green light of education to the turbocharged achievements — here’s my high-speed professional journey visualized like a Formula 1 race.</p>
+  </div>
 
-  <div class="laps-timeline">
-    <div class="lap">
-      <div class="lap-circle">1</div>
+  <div class="lap-track">
+    <!-- Lap 1 -->
+    <div class="lap-checkpoint">
+      <div class="lap-icon">🎓</div>
       <div class="lap-content">
-        <h3>🏎️ Intern @ XYZ Tech</h3>
-        <span>2024</span>
-        <p>Developed a microservice architecture for real-time data tracking.</p>
+        <h3>Lap 1: Formation Lap – Education</h3>
+        <ul>
+          <li><strong>Sri Someshwara Vidyalaya</strong> – SSLC (2020)</li>
+          <li><strong>Sri Siddaganga PU College</strong> – PUC (2022)</li>
+          <li><strong>DSATM</strong> – B.E. CSE (2022–26)</li>
+        </ul>
       </div>
     </div>
 
-    <div class="lap">
-      <div class="lap-circle">2</div>
+    <!-- Lap 2 -->
+    <div class="lap-checkpoint">
+      <div class="lap-icon">🛠️</div>
       <div class="lap-content">
-        <h3>🎓 B.E Computer Science</h3>
-        <span>2022 - 2026</span>
-        <p>Pursuing engineering with a passion for building F1-inspired tech.</p>
+        <h3>Lap 2: Research Garage – Publications</h3>
+        <ul>
+          <li><strong>FitTronix AI Fitness Game</strong> – AI based Fitness Game.</li>
+          <li><strong>Pet Management System</strong> – Tech in veterinary efficiency.</li>
+        </ul>
       </div>
     </div>
 
-    <div class="lap">
-      <div class="lap-circle">3</div>
+    <!-- Lap 3 -->
+    <div class="lap-checkpoint">
+      <div class="lap-icon">💻</div>
       <div class="lap-content">
-        <h3>💻 Project: AI Assistant “Zuki”</h3>
-        <span>2025</span>
-        <p>Designed an AI assistant capable of task automation and voice commands.</p>
+        <h3>Lap 3: Pit Stop – Internship</h3>
+        <p><strong>BlueStock (May–July 2025)</strong></p>
+        <ul>
+          <li>IPO App Development using Django & Bootstrap.</li>
+          <li>UI design, backend logic & deployment integration.</li>
+          <li>Remote teamwork & agile practices.</li>
+        </ul>
       </div>
     </div>
 
-    <div class="lap">
-      <div class="lap-circle">4</div>
+    <!-- Lap 4 -->
+    <div class="lap-checkpoint">
+      <div class="lap-icon">🏆</div>
       <div class="lap-content">
-        <h3>🏆 Hackathon Finalist</h3>
-        <span>2023</span>
-        <p>Built a smart IoT dashboard with predictive analytics for logistics.</p>
+        <h3>Lap 4: Overtakes – Certifications</h3>
+        <ul>
+          <li>C & DSA – Great Learning</li>
+          <li>AI Modules – Intel</li>
+          <li>Java – HackerRank</li>
+          <li>Pre-Placement – IIP & Adhiyuday Bombay</li>
+          <li>Innovation & Networking – Cisco + Center for Innovation</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Lap 5 -->
+    <div class="lap-checkpoint">
+      <div class="lap-icon">🚀</div>
+      <div class="lap-content">
+        <h3>Lap 5: Strategy Lap – Vision</h3>
+        <p>Engineer. Innovator. Performer. Prepping the chassis for top-tier companies with every upskill and pit entry.</p>
       </div>
     </div>
   </div>
 </section>
-<style>.career-laps {
-  padding: 2rem;
-  margin: 3rem auto;
-  color: #f1f1f1;
-  max-width: 900px;
-  border-radius: 20px;
-  background: rgba(0, 0, 0, 0.4);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  box-shadow: 0 0 20px rgba(0, 194, 255, 0.2);
-}
 
-.career-laps h2 {
-  font-size: 2rem;
-  margin-bottom: 1rem;
-  color: #00c2ff;
-}
-
-.career-laps .intro {
-  font-style: italic;
-  color: #ccc;
-  margin-bottom: 2rem;
-}
-
-.laps-timeline {
+<style>
+#career-laps {
+  background: url('assets/images/experience-bg.jpg') center center / cover no-repeat fixed;
+  background-attachment: fixed;
+  padding: 5rem 2rem;
   position: relative;
-  margin-left: 20px;
-  border-left: 3px solid #00c2ff99;
-  padding-left: 20px;
+  z-index: 1;
+  backdrop-filter: blur(1px);
 }
 
-.lap {
-  position: relative;
-  margin-bottom: 2rem;
-}
-
-.lap-circle {
+#career-laps::before {
+  content: '';
   position: absolute;
-  left: -33px;
-  top: 0;
-  width: 30px;
-  height: 30px;
-  background: #00c2ff;
-  color: #000;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 0;
+}
+
+#career-laps * {
+  position: relative;
+  z-index: 2;
+}
+
+.lap-track {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 1rem 2rem;
+  border-left: 4px dashed #ffe600;
+  position: relative;
+  margin-left: 2rem;
+}
+
+.lap-checkpoint {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  position: relative;
+}
+
+.lap-icon {
+  font-size: 2rem;
+  background: #ffe600;
+  color: black;
+  width: 3rem;
+  height: 3rem;
   border-radius: 50%;
-  text-align: center;
-  line-height: 30px;
-  font-weight: bold;
-  box-shadow: 0 0 10px #00c2ff88;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 0 10px #ffe600aa;
+  transform: translateX(-2.2rem);
+  flex-shrink: 0;
+}
+
+.lap-content {
+  background: rgba(0, 0, 0, 0.7);
+  padding: 1rem 1.5rem;
+  border-radius: 1rem;
+  box-shadow: 0 0 10px #00000066;
 }
 
 .lap-content h3 {
-  color: #fff;
-  font-size: 1.2rem;
-  margin-bottom: 0.2rem;
+  color: #ffe600;
+  margin-bottom: 0.5rem;
 }
 
-.lap-content span {
-  display: block;
-  font-size: 0.9rem;
-  color: #aaa;
-  margin-bottom: 0.4rem;
-}
-
+.lap-content ul li,
 .lap-content p {
-  font-size: 0.95rem;
-  color: #ccc;
+  color: #f0f0f0;
+  padding: 0.3rem 0;
+  line-height: 1.6;
+  font-weight: 500;
 }
+/* Add this at the top or globally in your CSS */
+body, html {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Optional: Also make sure the section spans full width */
+#career-laps {
+  width: 100vw;
+  margin: 0;
+  padding: 5rem 2rem;
+}
+
 </style>

@@ -1,102 +1,286 @@
-<section id="projects" class="track-record glass-card">
-  <h2>🏁 Track Record</h2>
-  <p class="intro">Each project is a custom-built machine tuned for performance.</p>
+<section id="projects" class="trophy-gallery-section">
+  <div class="section-wrapper">
+    <h2 class="gallery-title">🏆 Track Record: Trophy Gallery</h2>
+    <div class="trophy-vertical-wrapper">
+  <div class="trophy-gallery-vertical" id="trophyGallery">
+    <div class="trophy-item podium-gold" data-key="pet">
+  <img src="assets/images/trophy1.png" alt="Pet Management System" />
+  <p>Pet Management System</p>
+</div>
 
-  <div class="project-garage">
-    <div class="project-card">
-      <h3>🧠 Zuki AI Assistant</h3>
-      <p>A voice-controlled Python assistant that handles tasks, opens apps, and more.</p>
-      <span>Tech: Python, SpeechRecognition, pyttsx3</span>
-      <a href="#" class="pit-link">View Project</a>
-    </div>
+<div class="trophy-item podium-silver" data-key="zuki">
+  <img src="assets/images/trophy1.png" alt="AI Personal Assistant" />
+  <p>AI Personal Assistant</p>
+</div>
 
-    <div class="project-card">
-      <h3>🐾 Pet Management System</h3>
-      <p>React & PostgreSQL based system to track pet health and reminders.</p>
-      <span>Tech: React.js, Node.js, PostgreSQL</span>
-      <a href="#" class="pit-link">View Project</a>
-    </div>
+<div class="trophy-item podium-bronze" data-key="fit">
+  <img src="assets/images/trophy1.png" alt="FitTronix" />
+  <p>FitTronix</p>
+</div>
 
-    <div class="project-card">
-      <h3>📊 Fittronix Dashboard</h3>
-      <p>Fitness tracking dashboard with charts, calories, habits and analysis.</p>
-      <span>Tech: HTML, CSS, JS, Chart.js</span>
-      <a href="#" class="pit-link">View Project</a>
+  </div>
+</div>
+
+
+
+    <!-- Popups for details -->
+    <div id="projectDetail" class="project-detail-popup hidden">
+      <div class="glass-card project-card">
+        <h3 id="projectTitle"></h3>
+        <p id="projectDesc"></p>
+        <ul id="projectStack"></ul>
+
+        <div id="projectChallenges">
+          <h4>Challenges Faced:</h4>
+          <p><!-- Add challenges here --></p>
+        </div>
+
+      
+
+        <div class="project-links">
+          <a href="#" id="projectGithub" target="_blank" class="btn">GitHub</a>
+          <a href="#" id="projectDemo" target="_blank" class="btn">Live Demo</a>
+        </div>
+
+        <button onclick="closeProjectDetails()">Close</button>
+      </div>
     </div>
   </div>
 </section>
-<style>.track-record {
-  padding: 2rem;
-  margin: 3rem auto;
-  max-width: 1000px;
-  border-radius: 20px;
-  background: rgba(0, 0, 0, 0.4);
-  backdrop-filter: blur(10px);
-  box-shadow: 0 0 20px rgba(255, 0, 102, 0.2);
+
+<style>
+
+.trophy-item:hover::before {
+  content: '';
+  position: absolute;
+  top: -20%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255,255,255,0.25) 0%, transparent 80%);
+  z-index: -1;
+  border-radius: 50%;
+  animation: pulse 1.5s infinite;
+}
+@keyframes pulse {
+  0% { opacity: 0.5; }
+  50% { opacity: 0.9; }
+  100% { opacity: 0.5; }
 }
 
-.track-record h2 {
-  color: #ff0066;
-  font-size: 2rem;
-  margin-bottom: 1rem;
-}
-
-.track-record .intro {
-  font-style: italic;
-  color: #ccc;
-  margin-bottom: 2rem;
-}
-
-.project-garage {
+/* Trophy Grid */
+.trophy-gallery-vertical {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 1.5rem;
+  grid-template-columns: repeat(3, minmax(200px, 1fr));
+  column-gap: 0.5rem; /* Reduces side gap between columns */
+  row-gap: 1.0rem;       /* Optional: Adjust vertical gap */
+  justify-items: center;
 }
 
-.project-card {
-  background: rgba(255, 255, 255, 0.05);
-  border-left: 5px solid #ff0066;
-  padding: 1.5rem;
-  border-radius: 15px;
-  color: #fff;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+/* Trophy Card */
+.trophy-item {
+  position: relative;
+  margin: 0;
+  padding: 1.2rem;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.08);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  text-align: center;
+  min-width: 180px;
+  cursor: pointer;
 }
 
-.project-card:hover {
-  transform: scale(1.03);
-  box-shadow: 0 0 15px #ff006688;
+.trophy-item:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 20px #e10600aa;
 }
 
-.project-card h3 {
-  font-size: 1.3rem;
-  margin-bottom: 0.5rem;
-  color: #fff;
+.trophy-item img {
+  height: 100px;
+  filter: drop-shadow(0 0 10px #e10600);
 }
 
-.project-card p {
-  color: #ccc;
-  font-size: 0.95rem;
-  margin-bottom: 0.8rem;
-}
-
-.project-card span {
-  display: block;
-  font-size: 0.85rem;
-  color: #aaa;
-  margin-bottom: 0.6rem;
-}
-
-.pit-link {
-  text-decoration: none;
-  background: #ff0066;
-  color: black;
-  padding: 6px 12px;
-  border-radius: 6px;
+.trophy-item p {
+  margin-top: 0.5rem;
   font-weight: bold;
-  transition: background 0.3s ease;
+  color: white;
 }
 
-.pit-link:hover {
-  background: #ff3388;
+
+/* Hover Light Burst */
+.trophy-item:hover::before {
+  content: '';
+  position: absolute;
+  top: -20%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255,255,255,0.25) 0%, transparent 80%);
+  z-index: -1;
+  border-radius: 50%;
+  animation: pulse 1.5s infinite;
 }
+
+@keyframes pulse {
+  0% { opacity: 0.5; }
+  50% { opacity: 0.9; }
+  100% { opacity: 0.5; }
+}
+
+  
+
+  .project-detail-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1);
+    z-index: 10000;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 2rem;
+    border-radius: 16px;
+    backdrop-filter: blur(8px);
+    color: white;
+    animation: fadeInZoom 0.5s ease;
+    width: 90%;
+    max-width: 800px;
+  }
+
+  .project-detail-popup.hidden {
+    display: none;
+  }
+
+  .project-links {
+    margin-top: 1rem;
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+  }
+
+  .project-links .btn {
+    background-color: #e10600;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+  }
+
+  @keyframes fadeInZoom {
+    from { transform: translate(-50%, -50%) scale(0.5); opacity: 0; }
+    to { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+  }
+  body {
+  background: url('assets/images/projects-bg.jpg') center center / cover no-repeat fixed;
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif; /* or your preferred font */
+}
+.gallery-title {
+  text-align: center;
+  font-size: 2.8rem; /* You can increase or decrease as needed */
+  font-weight: 800;
+  color: #ffe600;
+  text-shadow: 2px 2px 8px #000;
+  margin-bottom: 2rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+@keyframes shine {
+  0% { opacity: 0.8; }
+  50% { opacity: 1; text-shadow: 2px 2px 12px #fff700; }
+  100% { opacity: 0.8; }
+}
+.gallery-title {
+  animation: shine 2.5s ease-in-out infinite;
+}
+
+
 </style>
+
+<script>
+  const projectData = {
+    pet: {
+      title: "Pet Management System",
+      desc: "A health records management system for pets built using React.js and PostgreSQL.",
+      stack: ["React.js", "PostgreSQL", "Authentication", "Responsive Design"],
+      github: "https://github.com/your-repo-pet",
+      demo: "https://pet-app-demo.com",
+      challenges: "Scheduling & Notifications, Data Accuracy & Validation , User Role Management",
+      
+    },
+    zuki: {
+      title: "AI Personal Assistant",
+      desc: "Python-based cross-device AI assistant with voice command and productivity features.",
+      stack: ["Python", "Speech Recognition", "Task Scheduler", "Automation"],
+      github: "https://github.com/Bharu-A/Zuki-AI-Assistant.git",
+      demo: "https://zuki-demo.com",
+      challenges: "Accurate Voice Recognition,Task Management & Multi-threading,Cross-Platform Compatibility",
+     
+    },
+    fit: {
+      title: "FitTronix",
+      desc: "AI fitness game using OpenCV with real-time posture and motion feedback. Research published.",
+      stack: ["OpenCV", "Python", "AI", "Fitness Tracking"],
+      github: "https://github.com/Bharu-A/FitTronix.git",
+      demo: "https://fittronix-demo.com",
+      challenges: "Real-time Pose Detection Accuracy,Smooth Feedback Loop,User Engagement & Game Design",
+      
+    }
+  };
+
+  document.querySelectorAll('.trophy-item').forEach(item => {
+    item.addEventListener('click', () => {
+  const key = item.dataset.key;
+  const gallery = document.getElementById('trophyGallery');
+  gallery.style.opacity = 0;
+  gallery.style.transform = 'translateX(-50px)';
+
+  // 🎉 Confetti burst
+  confetti({
+    particleCount: 80,
+    spread: 70,
+    origin: { y: 0.6 }
+  });
+
+  setTimeout(() => {
+    showProjectDetails(key);
+    gallery.style.display = 'none';
+  }, 500);
+});
+
+  });
+
+  function showProjectDetails(key) {
+    const project = projectData[key];
+    document.getElementById("projectTitle").innerText = project.title;
+    document.getElementById("projectDesc").innerText = project.desc;
+    const stackList = document.getElementById("projectStack");
+    stackList.innerHTML = "";
+    project.stack.forEach(item => {
+      const li = document.createElement("li");
+      li.textContent = item;
+      stackList.appendChild(li);
+    });
+    document.getElementById("projectGithub").href = project.github;
+    document.getElementById("projectDemo").href = project.demo;
+    document.getElementById("projectChallenges").querySelector("p").innerText = project.challenges;
+
+    document.getElementById("projectDetail").classList.remove("hidden");
+  }
+
+  function closeProjectDetails() {
+    const gallery = document.getElementById('trophyGallery');
+    gallery.style.display = 'grid';
+    gallery.style.opacity = 1;
+    gallery.style.transform = 'translateX(0)';
+    document.getElementById("projectDetail").classList.add("hidden");
+  }
+</script>
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>

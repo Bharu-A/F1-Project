@@ -1,0 +1,130 @@
+<!-- F1 Reflex Lights Challenge - Embed this at bottom of your homepage -->
+<section id="f1-reflex-game" class="f1-glass-card">
+  <h2>🟢 F1 Reflex Lights Challenge</h2>
+  <p id="game-instructions">Test your reaction time — wait for the green light!</p>
+  <div id="light-box"></div>
+  <button id="startGameBtn">Start Game</button>
+  <p id="reactionTime"></p>
+</section>
+
+ <audio id="f1-start-sound" src="https://cdn.pixabay.com/audio/2022/03/15/audio_c6ac0e25fc.mp3"></audio>
+  <audio id="f1-win-sound" src="https://cdn.pixabay.com/audio/2022/03/15/audio_3b03b0b688.mp3"></audio>
+<script>
+  const lightBox = document.getElementById("light-box");
+const startBtn = document.getElementById("startGameBtn");
+const resultText = document.getElementById("reactionTime");
+const instructions = document.getElementById("game-instructions");
+
+let startTime, timeoutId;
+
+startBtn.addEventListener("click", () => {
+  resultText.textContent = "";
+  lightBox.style.backgroundColor = "#ff0000";
+  lightBox.style.boxShadow = "0 0 20px #ff0000";
+  instructions.textContent = "Get ready... Wait for green!";
+  startBtn.disabled = true;
+
+  // Let user know game has started
+  const startMsg = new SpeechSynthesisUtterance("Lights out and away we go! Wait for green!");
+  speechSynthesis.speak(startMsg);
+
+  const delay = Math.floor(Math.random() * 3000) + 2000; // 2-5 seconds
+
+  timeoutId = setTimeout(() => {
+    lightBox.style.backgroundColor = "#00ff00";
+    lightBox.style.boxShadow = "0 0 20px #00ff00";
+    instructions.textContent = "GO!";
+    startTime = new Date().getTime();
+  }, delay);
+});
+
+lightBox.addEventListener("click", () => {
+  const currentTime = new Date().getTime();
+
+  if (!startTime) {
+    // Clicked too early
+    clearTimeout(timeoutId);
+    resultText.textContent = "Too soon! Wait for green!";
+    const fail = new SpeechSynthesisUtterance("Jumped the start! Try again.");
+    speechSynthesis.speak(fail);
+    startBtn.disabled = false;
+  } else {
+    const reactionTime = currentTime - startTime;
+    resultText.textContent = `🏁 Reaction Time: ${reactionTime} ms`;
+
+    const cheer = new SpeechSynthesisUtterance(`Reaction time: ${reactionTime} milliseconds`);
+    speechSynthesis.speak(cheer);
+
+    if (reactionTime < 300) {
+      const bonus = new SpeechSynthesisUtterance("That was lightning fast!");
+      speechSynthesis.speak(bonus);
+    }
+
+    startTime = null;
+    startBtn.disabled = false;
+  }
+});
+
+</script>
+<style>
+  body {
+    font-family: 'Orbitron', sans-serif;
+  }
+
+  .f1-glass-card {
+    margin: 4rem auto;
+    padding: 2rem;
+    width: 90%;
+    max-width: 500px;
+    border-radius: 20px;
+    background: linear-gradient(135deg, rgba(255,255,255,0.15), rgba(0,0,0,0.1));
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 30px rgba(0, 255, 255, 0.2);
+    text-align: center;
+    color: white;
+    position: relative;
+  }
+
+  #light-box {
+    margin: 2rem auto;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background-color: #ff0000;
+    box-shadow: 0 0 20px #ff0000;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  #startGameBtn {
+    padding: 10px 25px;
+    font-size: 1rem;
+    background-color: #ffe600;
+    color: #000;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    margin-top: 10px;
+    box-shadow: 0 0 10px #ffe600;
+    transition: transform 0.2s;
+  }
+
+  #startGameBtn:hover {
+    transform: scale(1.05);
+  }
+
+  #reactionTime {
+    font-weight: bold;
+    margin-top: 1.5rem;
+    font-size: 1.2rem;
+    color: #00ffcc;
+  }
+
+  #game-instructions {
+    font-size: 1rem;
+    color: #ccc;
+  }
+
+</style>
+<!-- Fonts and styles for cool look -->
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">

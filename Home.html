@@ -14,16 +14,17 @@
 <body>
     <div class="loader">Loading...</div>
     <div id="progress-bar"></div>
-    <a href="#hero" class="logo">
+    <a href="Home.html" class="logo">
       <img src="assets/images/f1-logo.png" alt="F1 Portfolio Logo" />
     </a>
     
-    <button id="soundBtn">
-      <img id="soundIcon" src="assets/icons/tyre-sound-off.png" alt="Sound Icon" />
-    </button>
-    <video id="introVideo" class="intro-video" muted autoplay playsinline>
-  <source src="assets/videos/track-drift-loop.mp4" type="video/mp4">
-</video>
+   
+    <div id="introWrapper">
+  <video id="introVideo" class="intro-video" muted autoplay playsinline>
+    <source src="assets/videos/track-drift-loop.mp4" type="video/mp4">
+  </video>
+</div>
+ 
 
     <div class="background-overlay"></div>
 <div class="f1-start-light" id="f1StartLight">
@@ -37,9 +38,12 @@
   <div class="go-text" id="goText">GO!</div>
 </div>
 
-<audio id="bgMusic" loop>
+<audio id="bgMusic" autoplay loop>
   <source src="assets/sounds/pit-radio.mp3" type="audio/mpeg">
 </audio>
+<button id="soundBtn">
+      <img id="soundIcon" src="assets/icons/tyre-sound-on.png" alt="Sound Icon" />
+    </button>
 
     <section id="hero" class="starting-grid">
       <div class="container">
@@ -89,27 +93,60 @@
     </div>
   </a>
 </section>
+
 <section id="contact" class="radio-check">
-  <a href="contact.html" class="section-link">
-    <div class="glass-card">
-      <h2>Radio Check</h2>
-      <form>
-        <input type="text" placeholder="Your Name" required />
-        <input type="email" placeholder="Your Email" required />
-        <textarea placeholder="Your Message"></textarea>
-        <button type="submit">Send</button>
-      </form>
-    </div>
-  </a>
+  <div class="glass-card">
+    <h2>🎙️ Radio Check</h2>
+
+    <form action="https://getform.io/f/allzmema" method="POST">
+      <!-- Inputs -->
+      <input type="text" name="name" placeholder="Your Name" required />
+      <input type="email" name="email" placeholder="Your Email" required />
+      <textarea name="message" placeholder="Your Message" required></textarea>
+
+      <!-- Spam Protection -->
+      <input type="hidden" name="_gotcha" style="display: none !important" />
+
+      <!-- Redirect to Thank You Page -->
+      <input type="hidden" name="_redirect" value="thank-you.html" />
+
+      <!-- Submit Button -->
+      <button type="submit">Send Radio Message 📡</button>
+    </form>
+  </div>
 </section>
+<a href="Bharath A Resume.pdf" download class="resume-btn">📄 Download Resume</a>
+
 </div>
-    <section id="game" class="racing-challenge">
-      <div class="container">
-        <h2>Red Bull Racing Challenge</h2>
-        <p>Play the F1 mini-game and race your way through!</p>
-        <iframe src="assets/f1-game/index.html" width="100%" height="400px" title="F1 Game"></iframe>
-      </div>
-    </section>
+    <div class="glass-card-red">
+  <h2>Red Bull Racing Challenge</h2>
+  <p>Play the F1 mini-game and race your way through!</p>
+<iframe 
+  src="game.html" 
+  width="900" 
+  height="600" 
+  scrolling="no" 
+  style="overflow: hidden;" 
+  title="F1 Game" 
+  class="game-frame">
+</iframe>
+
+</div>
+
+
+
+<div id="racemate-container">
+  <img id="racemate-avatar" src="assets/images/racemate.png" />
+  <div id="racemate-dialog" style="display: none;"></div>
+  <div id="racemate-options" style="display: none; flex-direction: column;">
+  <button class="option-btn" data-link="toolkit.html">🧰 Toolkit</button>
+  <button class="option-btn" data-link="about_me.html">🛠️ Pit Stop</button>
+  <button class="option-btn" data-link="experience.html">🏁 Career Laps</button>
+  <button class="option-btn" data-link="projects.html">🏆Track Record</button>
+  <button class="option-btn" data-link="projects.html">🎮 Red Bull Game</button>
+</div>
+
+</div>
 
 
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
